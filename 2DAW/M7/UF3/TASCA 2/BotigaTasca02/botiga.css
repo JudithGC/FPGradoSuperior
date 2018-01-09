@@ -1,0 +1,173 @@
+#taula{
+	border: 1px solid;
+	padding: 1px;
+	background: gray;
+}
+#taula th, #taula td{
+	text-align: center;
+	min-width: 100px;
+	border: 1px solid;
+	padding: 3px;
+	background: white;
+}
+.error {
+
+	font-family: Verdana, Arial, sans-serif;
+
+	font-size: 0.7em;
+
+	color: #900;
+
+	background-color : #ffff00;
+
+}
+
+.divisor {
+
+	clear:both;
+
+	height:0;
+
+	font-size: 1px;
+	line-height: 0px;
+
+}
+
+#login fieldset {
+
+	position: absolute;
+
+	left: 50%;
+
+	top: 50%;
+
+	width: 230px;
+
+	margin-left: -115px;
+
+	height: 160px;
+
+	margin-top: -80px;
+	padding:10px;
+	border:1px solid #ccc;
+	background-color: #eee;
+	}
+#login legend {
+	font-family : Arial, sans-serif;
+	font-size: 1.3em;
+	font-weight:bold;
+	color:#333;
+	}
+#login .camp {
+	margin-top:8px;
+	margin-bottom: 10px;
+	}
+#login label {
+	font-family : Arial, sans-serif;
+	font-size:0.8em;
+	font-weight: bold;
+	}
+#login input[type="text"],#login input[type="password"] {
+		font-family : Arial, Verdana, sans-serif;
+		font-size: 0.8em;
+		line-height:140%;
+		color : #000;
+		padding : 3px;
+		border : 1px solid #999;
+		height:18px;
+		width:220px;
+	}
+#login input[type="submit"] {
+	width:100px;
+	height:30px;
+	padding-left:0px;
+	}
+.pagproductes body, .pagcistella body {
+	font: 100% Verdana, Arial, Helvetica,
+	sans-serif;
+	background: #666;
+	#productes .codi {
+		width: 20%;
+		float: left;
+	}
+        #productes .nom {
+            width: 60%;
+            float: left;
+	}
+        #productes .preu {
+            width: 20%;
+            text-align: right;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #000000;
+	}
+        #contenidor {
+            width: 90%;
+            background: #fff;
+            margin: 0 auto;
+            border: 1px solid #000;
+            text-align: left;
+	}
+        #encapçalament {
+            padding: 0 10px;
+            border-top-width: thin;
+            border-right-width: thin;
+            border-bottom-width: thin;
+            border-left-width: thin;
+            border-top-style: solid;
+            border-right-style: solid;
+            border-bottom-style: solid;
+            border-left-style: solid;
+            background-color: #9cf;
+	}
+        #encapçalament h1 {
+            margin: 0;
+            padding: 10px 0;
+	}
+        .pagproductes #cistella {
+            float: right;
+            width: 12em;
+            background-color: #588;
+	}
+        .pagproductes #cistella h3 {
+            margin-left: 10px;
+            margin-right: 10px;
+	}
+        .pagproductes #cistella p {
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 10px;
+        }
+        .pagproductes #cistella input[type="submit"] {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 3px;
+            width:100px;
+            height:30px;
+            padding-left:0px;
+	}
+        .pagproductes #productes {
+            margin: 0 10em 0 10px;
+	}
+        .pagcistella #productes {
+            margin: 10px;
+            font-size: 12px;
+	}
+        .pagproductes #productes .pagproductes #productes p {
+		font-size: 10px;
+	}
+}
+#peu {
+    padding: 0 10px;
+    background-color: #99ccff;
+    border-top-width: thin;
+    border-right-width: thin;
+    border-bottom-width: thin;
+    border-left-width: thin;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+}

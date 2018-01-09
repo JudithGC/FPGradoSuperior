@@ -1,0 +1,187 @@
+CREATE OR REPLACE TYPE POLIGON AS OBJECT (
+  numCostats int,
+  MEMBER FUNCTION getNumCostats RETURN INT,
+  NOT INSTANTIABLE MEMBER FUNCTION getArea RETURN NUMBER ,
+  NOT INSTANTIABLE MEMBER FUNCTION getPerimetre RETURN NUMBER,
+  MAP MEMBER FUNCTION ordenarArea RETURN NUMBER
+ )NOT INSTANTIABLE NOT FINAL;
+/
+CREATE OR REPLACE TYPE BODY POLIGON IS
+  MEMBER FUNCTION getNumCostats RETURN INT IS
+    BEGIN
+    RETURN SELF.numCostats;
+  END getNumCostats;
+  MAP MEMBER FUNCTION ordenarArea RETURN NUMBER IS
+    BEGIN
+    RETURN SELF.getArea;
+  END ordenarArea;
+END;
+  /
+
+CREATE OR REPLACE TYPE TRIANGLE UNDER POLIGON (
+  base NUMBER,
+  altura NUMBER,
+  CONSTRUCTOR FUNCTION TRIANGLE RETURN SELF AS RESULT,
+  CONSTRUCTOR FUNCTION TRIANGLE (base NUMBER,altura NUMBER) RETURN SELF AS RESULT,
+  MEMBER PROCEDURE init(base NUMBER,altura NUMBER) ,
+  OVERRIDING MEMBER FUNCTION getNumCostats RETURN INT,
+  OVERRIDING MEMBER FUNCTION  getArea RETURN NUMBER ,
+  OVERRIDING MEMBER FUNCTION  getPerimetre RETURN NUMBER
+
+)NOT FINAL;
+/
+CREATE OR REPLACE TYPE BODY TRIANGLE IS
+  CONSTRUCTOR FUNCTION TRIANGLE RETURN SELF AS RESULT IS
+  BEGIN
+    SELF.init(0,0);
+    RETURN;
+  END TRIANGLE;
+  CONSTRUCTOR FUNCTION TRIANGLE (base NUMBER,altura NUMBER) RETURN SELF
+    AS RESULT IS
+      BEGIN
+        SELF.init(base,altura);
+      RETURN;
+    END TRIANGLE;
+  MEMBER PROCEDURE init(base NUMBER,altura NUMBER) IS
+    base2  SELF.base%TYPE;
+    altura2 SELF.altura%TYPE;
+    BEGIN
+        base2 := base;
+        altura2 := altura;
+        if base2 <0 then
+          base2:=0;
+        end if;  
+        if altura2 <0 then
+          altura2:=0;
+        end if; 
+        SELF.base:=base2;
+        SELF.altura:=altura2;
+    END init;
+    
+  OVERRIDING MEMBER FUNCTION getNumCostats   RETURN INT IS
+    BEGIN
+    RETURN 3;
+  END getNumCostats;  
+  OVERRIDING MEMBER FUNCTION getArea RETURN NUMBER IS
+      BEGIN
+        RETURN (SELF.base * SELF.altura)/2;
+  END getArea ;
+  
+  OVERRIDING MEMBER FUNCTION getPerimetre RETURN NUMBER IS
+      BEGIN
+        RETURN (SELF.base * 3);
+  END getPerimetre;
+END;
+  /
+
+CREATE OR REPLACE TYPE QUADRILATER UNDER POLIGON (
+  OVERRIDING MEMBER FUNCTION getNumCostats RETURN INT
+ )NOT INSTANTIABLE NOT FINAL;
+/
+CREATE OR REPLACE TYPE BODY QUADRILATER AS
+  OVERRIDING MEMBER FUNCTION getNumCostats RETURN INT IS
+    BEGIN
+      RETURN 4;
+  END  getNumCostats;
+END;  
+/
+CREATE OR REPLACE TYPE RECTANGLE UNDER QUADRILATER (
+  base NUMBER ,
+  altura NUMBER,
+  CONSTRUCTOR FUNCTION RECTANGLE RETURN SELF AS RESULT, 
+  CONSTRUCTOR FUNCTION RECTANGLE (base NUMBER,altura NUMBER) RETURN SELF AS RESULT,
+  MEMBER PROCEDURE init(base NUMBER, altura NUMBER),
+  OVERRIDING MEMBER FUNCTION getArea RETURN NUMBER,
+  OVERRIDING MEMBER FUNCTION getPerimetre RETURN NUMBER
+)NOT FINAL;
+/
+
+CREATE OR REPLACE TYPE BODY RECTANGLE IS
+  CONSTRUCTOR FUNCTION RECTANGLE RETURN SELF AS RESULT IS
+  BEGIN
+    SELF.init(0,0);
+    RETURN;
+  END RECTANGLE;
+  CONSTRUCTOR FUNCTION RECTANGLE (base NUMBER,altura NUMBER) RETURN SELF
+    AS RESULT IS
+      BEGIN
+        SELF.init(base,altura);
+      RETURN;
+    END RECTANGLE;
+  MEMBER PROCEDURE init(base NUMBER,altura NUMBER) IS
+    base2  SELF.base%TYPE;
+    altura2 SELF.altura%TYPE;
+    BEGIN
+        base2 := base;
+        altura2 := altura;
+        if base2 <0 then
+          base2:=0;
+        end if;  
+        if altura2 <0 then
+          altura2:=0;
+        end if; 
+        SELF.base:=base2;
+        SELF.altura:=altura2;
+    END init;
+
+  OVERRIDING MEMBER FUNCTION getArea RETURN NUMBER IS
+      BEGIN
+        RETURN (SELF.base * SELF.altura);
+  END getArea ;
+  
+  OVERRIDING MEMBER FUNCTION getPerimetre RETURN NUMBER IS
+      BEGIN
+        RETURN (SELF.base * 2) + (SELF.altura *2);
+  END getPerimetre;
+END;
+  /
+    
+CREATE OR REPLACE TYPE QUADRAT UNDER QUADRILATER (
+  costat NUMBER,
+  CONSTRUCTOR FUNCTION QUADRAT RETURN SELF AS RESULT, 
+  CONSTRUCTOR FUNCTION QUADRAT (costat NUMBER) RETURN SELF AS RESULT,
+  MEMBER PROCEDURE init(costat NUMBER),
+  OVERRIDING MEMBER FUNCTION getArea RETURN NUMBER,
+  OVERRIDING MEMBER FUNCTION getPerimetre RETURN NUMBER
+)NOT FINAL;
+/
+CREATE OR REPLACE TYPE BODY QUADRAT IS
+  CONSTRUCTOR FUNCTION QUADRAT RETURN SELF AS RESULT IS
+  BEGIN
+    SELF.init(0);
+    RETURN;
+  END QUADRAT;
+  CONSTRUCTOR FUNCTION QUADRAT (costat NUMBER) RETURN SELF
+    AS RESULT IS
+      BEGIN
+        SELF.init(costat);
+      RETURN;
+    END QUADRAT;
+  MEMBER PROCEDURE init(costat NUMBER) IS
+    costat2  SELF.costat%TYPE;
+   
+    BEGIN
+        costat2 := costat;
+        if costat2 <0 then
+          costat2:=0;
+        end if;  
+        
+        SELF.costat:=costat2;
+     
+    END init;
+
+  OVERRIDING MEMBER FUNCTION getArea RETURN NUMBER IS
+      BEGIN
+        RETURN (SELF.costat * 2);
+  END getArea ;
+  
+  OVERRIDING MEMBER FUNCTION getPerimetre RETURN NUMBER IS
+      BEGIN
+        RETURN SELF.costat * 4;
+  END getPerimetre;
+END;
+  /
+  
+
+
+
